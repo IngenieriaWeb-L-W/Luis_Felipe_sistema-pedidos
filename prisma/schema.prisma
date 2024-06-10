@@ -15,9 +15,11 @@ datasource db {
 
 generator typegraphql {
   provider           = "typegraphql-prisma"
-  output             = "./prisma/generated/type-graphql"
+  output             = "../prisma/generated/type-graphql"
   emitTranspiledCode = true
   formatGeneratedCode = "prettier"
+  outputRelativeToSchema = true
+  simpleResolvers = true
 }
 
 model Product {

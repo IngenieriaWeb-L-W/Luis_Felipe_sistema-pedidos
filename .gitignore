@@ -36,6 +36,7 @@ yarn-error.log*
 next-env.d.ts
 
 /prisma/generated
+/prisma/prisma
 /prisma/migrations
 .vscode
 yarn.lock
