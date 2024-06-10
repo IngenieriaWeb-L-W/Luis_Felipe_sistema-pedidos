@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 function Index() {
   return (
@@ -70,13 +71,19 @@ function Index() {
                 <div className='flex justify-between'>
                   <div className='flex gap-4 mt-6'>
                     <div>
-                      <img
+                      <Image
                         src='https://tuk-cdn.s3.amazonaws.com/can-uploader/cddew.png'
+                        alt='Amazon Beat Box A-48 High Sound Speaker'
                         className='md:block hidden'
+                        width={300}
+                        height={200}
                       />
-                      <img
+                      <Image
                         src='https://tuk-cdn.s3.amazonaws.com/can-uploader/kkjjnnbb.png'
+                        alt='Amazon Beat Box A-48 High Sound Speaker'
                         className='md:hidden block'
+                        width={300}
+                        height={200}
                       />
                     </div>
                     <div>
@@ -101,15 +108,19 @@ function Index() {
                 <div className='flex justify-between mt-8'>
                   <div className='flex gap-4 mt-6'>
                     <div>
-                      <img
+                      <Image
                         src='https://tuk-cdn.s3.amazonaws.com/can-uploader/bxcsd.png'
-                        alt=''
+                        alt='Luxe Sports A-48 Sneakers collection'
                         className='md:block hidden'
+                        width={300}
+                        height={200}
                       />
-                      <img
+                      <Image
                         src='https://tuk-cdn.s3.amazonaws.com/can-uploader/ppmg.png'
-                        alt=''
+                        alt='Luxe Sports A-48 Sneakers collection'
                         className='md:hidden block'
+                        width={300}
+                        height={200}
                       />
                     </div>
                     <div>

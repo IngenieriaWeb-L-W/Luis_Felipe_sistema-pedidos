@@ -7,7 +7,7 @@ const Auth0 = async (req: any, res: any) => {
     const session = await getServerSession(req, res, options);
     const { data } = req.body;
     if (session) {
-      let userData;
+      let userData: { statusCode?: any; message?: any; };
       try {
         const { access_token: accessToken, token_type: tokenType } = await getAuth0Token().then(
           (resToken) => resToken

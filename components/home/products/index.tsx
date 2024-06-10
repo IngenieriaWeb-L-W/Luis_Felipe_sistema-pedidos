@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Card from './card';
 import { useAtom } from 'jotai';
-import { productsAtom, cartAtom } from '@/atoms/cart';
+import { productsAtom, cartAtom } from '@/atoms/atomProducts';
 import { ProductType } from '@/types';
 import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from '@/utils/queries/products';

@@ -6,6 +6,9 @@ module.exports = {
       'placekitten.com',
       'placeimg.com',
       'fakestoreapi.com',
+      'images.unsplash.com',
+      'static.dafiti.com.co',
+      'resources.sears.com.mx',
     ],
   },
 };

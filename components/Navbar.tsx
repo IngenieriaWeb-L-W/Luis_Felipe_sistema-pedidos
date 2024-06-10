@@ -1,7 +1,8 @@
 import React from 'react';
 import { useAtom } from 'jotai';
-import { cartAtom } from '@/atoms/cart';
+import { cartAtom } from '@atoms/atomProducts';
 import Link from 'next/link';
+import Image from 'next/image';
 import { signIn, useSession, signOut } from 'next-auth/react';
 
 const Navbar = () => {
@@ -19,9 +20,11 @@ const Navbar = () => {
                 href='/'
                 className='block mx-4 text-gray-700 capitalize dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400'
               >
-                <img
+                <Image
                   className='w-auto h-6 sm:h-7'
                   src='https://merakiui.com/images/full-logo.svg'
+                  width={200}
+                  height={50}
                   alt=''
                 />
               </Link>
