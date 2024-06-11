@@ -1,5 +1,6 @@
-import React from 'react';
 
+import React from 'react';
+import Image from 'next/image';
 const Index = () => {
   return (
     <div>
@@ -117,10 +118,13 @@ const Index = () => {
             </div>
 
             <div className='hidden lg:flex lg:items-center lg:w-1/2 lg:justify-center'>
-              <img
+              
+              <Image
                 className='w-[28rem] h-[28rem] object-cover xl:w-[34rem] xl:h-[34rem] rounded-full'
-                src='https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=755&q=80'
+                src='https://cdn.dynamicyield.com/api/8767770/images/2e1f9d4712db2__cluster-categorias_outlet.jpg'
                 alt=''
+                width={500}
+                height={500}
               />
             </div>
           </div>

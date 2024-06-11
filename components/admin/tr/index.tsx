@@ -10,6 +10,7 @@ interface IndexProps {
   product: ProductType;
 }
 
+
 const Index = ({ product }: IndexProps) => {
   const router = useRouter();
   const [deleteProduct] = useMutation(DELETE_PRODUCT);

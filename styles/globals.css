@@ -10,7 +10,7 @@
     }
     
 .card:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }
     
 .card-content {
@@ -26,4 +26,32 @@
         align-items: center;
         margin-top: auto;
     }
-    
+
+nav {
+    position: sticky;
+    top: 0;
+    transition: top 0.3s ease;
+    }
+
+nav.scrolled {
+    top: -64px;
+    }
+
+.dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+.dropdown-menu.open {
+        max-height: 500px; /* Ajusta este valor según la altura máxima deseada del menú desplegable */
+    }
+
+.nav-link {
+        transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+        color: #007bff;
+        font-size: 1.1rem;
+    }

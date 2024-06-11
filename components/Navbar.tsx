@@ -1,125 +1,118 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAtom } from 'jotai';
 import { cartAtom } from '@atoms/atomProducts';
 import Link from 'next/link';
 import Image from 'next/image';
 import { signIn, useSession, signOut } from 'next-auth/react';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
-  if (typeof window !== 'undefined') {
-  }
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   const { data: session, status } = useSession();
   const [cart] = useAtom(cartAtom);
+
   return (
-    <div>
-      <nav x-data='{ isOpen: false }' className='bg-white shadow dark:bg-gray-900'>
-        <div className='container px-6 py-4 mx-auto'>
-          <div className='lg:flex lg:items-center lg:justify-between'>
-            <div className='flex items-center justify-between'>
-              <Link
-                href='/'
-                className='block mx-4 text-gray-700 capitalize dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400'
+    <motion.nav
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      className="bg-blue-500 shadow-lg dark:bg-gray-800"
+    >
+      <div className="container px-6 py-4 mx-auto">
+        <div className="flex items-center justify-between">
+          <Link href="/">
+            <div className="text-white uppercase hover:text-white">
+              <Image
+                className="w-auto h-6 sm:h-7"
+                src="https://merakiui.com/images/full-logo.svg"
+                width={200}
+                height={50}
+                alt=""
+              />
+            </div>
+          </Link>
+          <div className="flex items-center justify-end space-x-4 lg:flex">
+            <Link href="/admin">
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="text-white uppercase hover:text-blue-200"
               >
-                <Image
-                  className='w-auto h-6 sm:h-7'
-                  src='https://merakiui.com/images/full-logo.svg'
-                  width={200}
-                  height={50}
-                  alt=''
-                />
-              </Link>
-              <div className='flex lg:hidden'>
-                <button
-                  type='button'
-                  className='text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400'
-                  aria-label='toggle menu'
-                >
-                  <svg
-                    x-show='!isOpen'
-                    xmlns='http://www.w3.org/2000/svg'
-                    className='w-6 h-6'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    stroke='currentColor'
-                    strokeWidth='2'
-                  >
-                    <path strokeLinecap='round' strokeLinejoin='round' d='M4 8h16M4 16h16' />
-                  </svg>
-
-                  <svg
-                    x-show='isOpen'
-                    xmlns='http://www.w3.org/2000/svg'
-                    className='w-6 h-6'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    stroke='currentColor'
-                    strokeWidth='2'
-                  >
-                    <path strokeLinecap='round' strokeLinejoin='round' d='M6 18L18 6M6 6l12 12' />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div className='absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white shadow-md lg:bg-transparent lg:dark:bg-transparent lg:shadow-none dark:bg-gray-900 lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:w-auto lg:opacity-100 lg:translate-x-0'>
-              <div className='-mx-4 lg:flex lg:items-center'>
-                <Link
-                  href='/checkout'
-                  className='block mx-4 text-gray-700 capitalize dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400'
-                >
-                  Checkout
-                </Link>
-                <Link
-                  href='/admin'
-                  className='block mx-4 mt-4 text-gray-700 capitalize lg:mt-0 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400'
-                >
-                  Admin
-                </Link>
-                <Link
-                  href='/products'
-                  className='block mx-4 mt-4 text-gray-700 capitalize lg:mt-0 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400'
-                >
-                  Products
-                </Link>
-                <Link
-                  href='/contact'
-                  className='block mx-4 mt-4 text-gray-700 capitalize lg:mt-0 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400'
-                >
-                  Contact
-                </Link>
+                Admin
+              </motion.div>
+            </Link>
+            <Link href="/products">
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="text-white uppercase hover:text-blue-200"
+              >
+                Store
+              </motion.div>
+            </Link>
+            <Link href="/checkout">
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="text-white uppercase hover:text-blue-200"
+              >
+                Checkout
+              </motion.div>
+            </Link>
+            <Link href="/contact">
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="text-white uppercase hover:text-blue-200"
+              >
+                Contact
+              </motion.div>
+            </Link>
+            <div>
+              {session ? (
                 <div>
-                  {session ? (
-                    <div>
-                      <p className='block mx-4 mt-4 text-gray-700 capitalize lg:mt-0 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400'>
-                        {session.user?.name} - {session.user?.email}
-                      </p>
-                      <button
-                        className='block mx-4 mt-4 text-gray-700 capitalize lg:mt-0 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400'
-                        onClick={() => {
-                          signOut();
-                        }}
-                      >
-                        Cerrar Sesión
-                      </button>
-                    </div>
-                  ) : (
-                    <button
-                      onClick={() => {
-                        signIn('auth0');
-                      }}
-                      className='block mx-4 mt-4 text-gray-700 capitalize lg:mt-0 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400'
-                    >
-                      Inicio Sesión
-                    </button>
-                  )}
+                  <motion.p
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="text-white uppercase hover:text-blue-200"
+                  >
+                    {session.user?.name} 
+                    {/* - {session.user?.email} */}
+                  </motion.p>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="text-white uppercase hover:text-blue-200"
+                    onClick={() => {
+                      signOut();
+                    }}
+                  >
+                    Cerrar Sesión
+                  </motion.button>
                 </div>
-
-                <div className='text-4xl text-white font-bold'>{cart.length}</div>
-              </div>
+              ) : (
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => {
+                    signIn('auth0');
+                  }}
+                  className="text-white uppercase hover:text-blue-200"
+                >
+                  Inicio Sesión
+                </motion.button>
+              )}
             </div>
+            <div className="text-4xl text-white font-bold">{cart.length}</div>
           </div>
         </div>
-      </nav>
-    </div>
+      </div>
+    </motion.nav>
   );
 };
 

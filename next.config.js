@@ -9,6 +9,7 @@ module.exports = {
       'images.unsplash.com',
       'static.dafiti.com.co',
       'resources.sears.com.mx',
+      'cdn.dynamicyield.com',
     ],
   },
 };
